@@ -13,6 +13,7 @@ import {
   RandomText,
 } from './Hero.styled';
 import Loader from 'components/Loader/Loader';
+import Error from 'components/Error/Error';
 
 const Hero = () => {
   const [heroData, setHeroData] = useState({
@@ -22,7 +23,7 @@ const Hero = () => {
     homepage: '',
     wiki: '',
     loading: true,
-    error: '',
+    error: false,
   });
 
   useEffect(() => {
@@ -43,22 +44,23 @@ const Hero = () => {
           loading: false,
         });
       } catch (error) {
-        console.log(error);
-      } finally {
-        setHeroData({ loading: false });
+        console.log(error.message);
+        setHeroData({ loading: false, error: true });
       }
     })();
   }, []);
 
-  const { name, description, thumbnail, homepage, wiki } = heroData;
+  const { name, description, thumbnail, homepage, wiki, loading, error } =
+    heroData;
 
   return (
     <section>
       <ContainerStyled>
         <WrapperStyled>
           <HeroStyled>
-            <Loader loading={heroData.loading} />
-            {!heroData.loading && (
+            <Loader loading={loading} />
+            <Error error={error} />
+            {!loading && !error ? (
               <>
                 <img src={thumbnail} alt={`${name}`} width="180" height="180" />
                 <HeroWrapperStyled>
@@ -79,7 +81,7 @@ const Hero = () => {
                   </div>
                 </HeroWrapperStyled>
               </>
-            )}
+            ) : null}
           </HeroStyled>
           <RandomStyled>
             <RandomText style={{ marginBottom: '41px' }}>
