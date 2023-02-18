@@ -27,28 +27,29 @@ const Hero = () => {
   });
 
   useEffect(() => {
-    const randomApi = new MarvelService();
-
-    (async function fetchRandomHero() {
-      try {
-        const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        const { results } = await randomApi.getCharacter(id);
-        const { name, description, thumbnail, urls } = results[0];
-        console.log(results[0]);
-        setHeroData({
-          name,
-          description,
-          thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
-          homepage: urls[0].url,
-          wiki: urls[1].url,
-          loading: false,
-        });
-      } catch (error) {
-        console.log(error.message);
-        setHeroData({ loading: false, error: true });
-      }
-    })();
+    fetchRandomHero();
   }, []);
+
+  async function fetchRandomHero() {
+    const randomApi = new MarvelService();
+    try {
+      const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
+      const { results } = await randomApi.getCharacter(id);
+      const { name, description, thumbnail, urls } = results[0];
+      console.log(results[0]);
+      setHeroData({
+        name,
+        description,
+        thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
+        homepage: urls[0].url,
+        wiki: urls[1].url,
+        loading: false,
+      });
+    } catch (error) {
+      console.log(error.message);
+      setHeroData({ loading: false, error: true });
+    }
+  }
 
   const { name, description, thumbnail, homepage, wiki, loading, error } =
     heroData;
@@ -92,7 +93,7 @@ const Hero = () => {
             <RandomText style={{ marginBottom: '17px' }}>
               Or choose another one
             </RandomText>
-            <HeroBtn>
+            <HeroBtn onClick={fetchRandomHero}>
               <BtnInner>Try it</BtnInner>
             </HeroBtn>
           </RandomStyled>
