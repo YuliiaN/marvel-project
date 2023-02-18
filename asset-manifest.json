@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/marvel-project/static/css/main.782f16fa.css",
-    "main.js": "/marvel-project/static/js/main.3330c198.js",
+    "main.js": "/marvel-project/static/js/main.dc3f76d3.js",
     "static/media/vision.png": "/marvel-project/static/media/vision.a6a5a9ca9a568871a720.png",
     "static/media/mjolnir.png": "/marvel-project/static/media/mjolnir.482186e7d244971ab810.png",
     "static/media/abyss.jpg": "/marvel-project/static/media/abyss.93d211d37b67a60bace9.jpg",
     "index.html": "/marvel-project/index.html",
     "main.782f16fa.css.map": "/marvel-project/static/css/main.782f16fa.css.map",
-    "main.3330c198.js.map": "/marvel-project/static/js/main.3330c198.js.map"
+    "main.dc3f76d3.js.map": "/marvel-project/static/js/main.dc3f76d3.js.map"
   },
   "entrypoints": [
     "static/css/main.782f16fa.css",
-    "static/js/main.3330c198.js"
+    "static/js/main.dc3f76d3.js"
   ]
 }
