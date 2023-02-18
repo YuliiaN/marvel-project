@@ -15,6 +15,13 @@ body {
   color: #232222;
 }
 
+main {
+  background-image: url('./img/vision.png');
+  background-repeat: no-repeat;
+  background-position: right 0 bottom 0;
+  background-size: 467px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

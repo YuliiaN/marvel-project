@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import hero from '../../img/thor.jpeg';
 import mjolnir from '../../img/mjolnir.png';
 
 export const WrapperStyled = styled.div`
@@ -19,16 +18,6 @@ export const HeroStyled = styled.div`
   gap: 30px;
 `;
 
-export const HeroImage = styled.img`
-  width: 180px;
-  height: 180px;
-`;
-
-HeroImage.defaultProps = {
-  src: `${hero}`,
-  alt: 'picture of character',
-};
-
 export const HeroWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,10 +36,9 @@ export const HeroDescStyled = styled.p`
   line-height: 1.14;
 `;
 
-export const HeroBtn = styled.button`
-  min-width: 101px;
+export const HeroBtn = styled.a`
+  width: 101px;
   color: #fff;
-  text-align: center;
   text-transform: uppercase;
   font-size: 14px;
   transition: 0.3s transform;
@@ -77,6 +65,7 @@ export const HeroBtn = styled.button`
 
   &:hover {
     transform: translateY(-5px);
+    color: #fff;
   }
 
   &.secondary::before,
@@ -86,10 +75,14 @@ export const HeroBtn = styled.button`
 `;
 
 HeroBtn.defaultProps = {
-  type: 'button',
+  rel: 'nofollow noopener noreferrer',
+  target: '_blank',
 };
 
 export const BtnInner = styled.div`
+  display: flex;
+  justify-content: center;
+
   position: relative;
   background-color: #9f0013;
   line-height: 18px;

@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
+import MarvelService from 'services/MarvelService';
 import ContainerStyled from 'components/Container/Container.styled';
 import {
   WrapperStyled,
   HeroStyled,
-  HeroImage,
   HeroWrapperStyled,
   HeroTitleStyled,
   HeroDescStyled,
@@ -11,36 +12,74 @@ import {
   RandomStyled,
   RandomText,
 } from './Hero.styled';
+import Loader from 'components/Loader/Loader';
 
 const Hero = () => {
+  const [heroData, setHeroData] = useState({
+    name: '',
+    description: '',
+    thumbnail: '',
+    homepage: '',
+    wiki: '',
+    loading: true,
+    error: '',
+  });
+
+  useEffect(() => {
+    const randomApi = new MarvelService();
+
+    (async function fetchRandomHero() {
+      try {
+        const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
+        const { results } = await randomApi.getCharacter(id);
+        const { name, description, thumbnail, urls } = results[0];
+        console.log(results[0]);
+        setHeroData({
+          name,
+          description,
+          thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
+          homepage: urls[0].url,
+          wiki: urls[1].url,
+          loading: false,
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setHeroData({ loading: false });
+      }
+    })();
+  }, []);
+
+  const { name, description, thumbnail, homepage, wiki } = heroData;
+
   return (
     <section>
       <ContainerStyled>
         <WrapperStyled>
           <HeroStyled>
-            <HeroImage />
-            <HeroWrapperStyled>
-              <HeroTitleStyled>Thor</HeroTitleStyled>
-              <HeroDescStyled>
-                As the Norse God of thunder and lightning, Thor wields one of
-                the greatest weapons ever made, the enchanted hammer Mjolnir.
-                While others have described Thor as an over-muscled, oafish
-                imbecile, he's quite smart and compassionate...
-              </HeroDescStyled>
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '30px',
-                }}
-              >
-                <HeroBtn>
-                  <BtnInner>Homepage</BtnInner>
-                </HeroBtn>
-                <HeroBtn className="secondary">
-                  <BtnInner className="secondary">Wiki</BtnInner>
-                </HeroBtn>
-              </div>
-            </HeroWrapperStyled>
+            <Loader loading={heroData.loading} />
+            {!heroData.loading && (
+              <>
+                <img src={thumbnail} alt={`${name}`} width="180" height="180" />
+                <HeroWrapperStyled>
+                  <HeroTitleStyled>{name}</HeroTitleStyled>
+                  <HeroDescStyled>{description}</HeroDescStyled>
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '30px',
+                    }}
+                  >
+                    <HeroBtn href={homepage}>
+                      <BtnInner>Homepage</BtnInner>
+                    </HeroBtn>
+                    <HeroBtn href={wiki} className="secondary">
+                      <BtnInner className="secondary">Wiki</BtnInner>
+                    </HeroBtn>
+                  </div>
+                </HeroWrapperStyled>
+              </>
+            )}
           </HeroStyled>
           <RandomStyled>
             <RandomText style={{ marginBottom: '41px' }}>
