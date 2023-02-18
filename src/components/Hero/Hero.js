@@ -11,7 +11,6 @@ import {
   RandomStyled,
   RandomText,
 } from './Hero.styled';
-import hero from '../../img/thor.jpeg';
 
 const Hero = () => {
   return (
