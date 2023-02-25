@@ -8,7 +8,6 @@ const CharItem = ({ id, name, thumbnail, handleClick }) => {
   return (
     <CharItemStyled
       id={id}
-      className="char__item"
       onClick={() => {
         handleClick(id);
       }}

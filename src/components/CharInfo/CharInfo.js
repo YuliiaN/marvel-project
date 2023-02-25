@@ -1,4 +1,4 @@
-import CharInfoStyled from './CharInfo.styled';
+// import CharInfoStyled from './CharInfo.styled';
 import CharCard from './CharCard/CharCard';
 import CharDesc from './CharDesc/CharDesc';
 import { useState, useEffect } from 'react';
@@ -39,10 +39,12 @@ const CharInfo = ({ charId }) => {
   }, [charId]);
 
   return (
-    <CharInfoStyled>
+    // <CharInfoStyled>
+    <>
       <CharCard char={char} />
       <CharDesc comics={comics} desc={char.description} />
-    </CharInfoStyled>
+    </>
+    // </CharInfoStyled>
   );
 };
 

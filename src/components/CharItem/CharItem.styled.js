@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import hero from '../../img/abyss.jpg';
 
 export const CharItemStyled = styled.li`
   width: 200px;
