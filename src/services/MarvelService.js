@@ -35,6 +35,20 @@ class MarvelService {
     const comics = results.map(({ id, title, urls }) => ({ id, title, urls }));
     return comics;
   };
+
+  getAllComics = async offset => {
+    const res = await this.getResource(
+      `comics?orderBy=title&limit=12&offset=${offset}&`
+    );
+    const { results } = res;
+    const comics = results.map(({ id, title, thumbnail, prices }) => ({
+      id,
+      title,
+      thumbnail,
+      prices,
+    }));
+    return comics;
+  };
 }
 
 export default MarvelService;

@@ -12,11 +12,11 @@ const CharList = ({ onCharSelected }) => {
   const [offset, setOffset] = useState(null);
 
   useEffect(() => {
-    fetchAllCharacters(0);
+    // fetchAllCharacters(0);
   }, []);
 
   useEffect(() => {
-    fetchAllCharacters(offset);
+    // fetchAllCharacters(offset);
   }, [offset]);
 
   async function fetchAllCharacters(offset) {

@@ -6,8 +6,36 @@ import comics from '../img/UW.png';
 import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
 import { Link } from 'react-router-dom';
 import { routes } from 'routes';
+import { useState, useEffect } from 'react';
+import { api } from 'components/Hero/Hero';
+import { nanoid } from 'nanoid';
 
 const Comics = () => {
+  const [comics, setComics] = useState([]);
+  const [offset, setOffset] = useState(null);
+
+  useEffect(() => {
+    fetchAllComics(offset);
+  }, []);
+
+  useEffect(() => {
+    fetchAllComics(offset);
+  }, [offset]);
+
+  async function fetchAllComics(offset) {
+    try {
+      const res = await api.getAllComics(offset);
+      setComics(prevData => (prevData.length ? [...comics, ...res] : [...res]));
+      console.log(res);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  const handleClick = () => {
+    setOffset(prevState => prevState + 9);
+  };
+
   return (
     <>
       <ContainerStyled>
@@ -20,63 +48,31 @@ const Comics = () => {
 
       <section style={{ padding: '45px 0 50px' }}>
         <ContainerStyled>
-          <ul className={css.list}>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-            <li className={css.item}>
-              <Link to={routes.COMICS_ID}>
-                <img className={css.img} src={comics} alt="" />
-                <h2 className={css.subtitle}>Name of comics</h2>
-                <p className={css.price}>9,99 $</p>
-              </Link>
-            </li>
-          </ul>
+          {!!comics.length && (
+            <ul className={css.list}>
+              {comics.map(({ id, title, thumbnail, prices }) => (
+                <li key={nanoid()} className={css.item}>
+                  <Link to={routes.COMICS_ID}>
+                    <img
+                      className={css.img}
+                      src={`${thumbnail.path}.${thumbnail.extension}`}
+                      alt={title}
+                    />
+                    <h2 className={css.subtitle}>{title}</h2>
+                    <p className={css.price}>{prices[0].price}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
           <HeroBtn
             style={{
               display: 'block',
               width: '170px',
               margin: '45px auto 0',
             }}
+            onClick={handleClick}
           >
             <BtnInner>Load more</BtnInner>
           </HeroBtn>
