@@ -1,0 +1,57 @@
+.banner {
+  width: calc(100% - 70px);
+  padding-right: 25px;
+  padding-left: 45px;
+  height: 100px;
+  background-color: #232222;
+
+  display: flex;
+}
+
+.title {
+  width: 235px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.12;
+  color: #fff;
+
+  margin-left: 83px;
+}
+
+.avengers {
+  width: 152px;
+}
+
+.logo {
+  width: 133px;
+  margin-left: auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 67px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.item {
+  width: calc((100% - 201px) / 4);
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25));
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+.img {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: rgba(0, 0, 0, 0.6);
+}
