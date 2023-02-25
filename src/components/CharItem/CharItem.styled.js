@@ -21,11 +21,6 @@ export const CharItemImageStyled = styled.img`
   margin-bottom: 18px;
 `;
 
-CharItemImageStyled.defaultProps = {
-  src: `${hero}`,
-  alt: 'picture of hero',
-};
-
 export const CharItemTitleStyled = styled.h2`
   margin-left: 18px;
   font-weight: 700;

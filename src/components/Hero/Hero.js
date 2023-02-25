@@ -15,6 +15,8 @@ import {
 import Loader from 'components/Loader/Loader';
 import Error from 'components/Error/Error';
 
+export const api = new MarvelService();
+
 const Hero = () => {
   const [heroData, setHeroData] = useState({
     name: '',
@@ -27,16 +29,17 @@ const Hero = () => {
   });
 
   useEffect(() => {
-    fetchRandomHero();
+    // fetchRandomHero();
   }, []);
 
   async function fetchRandomHero() {
-    const randomApi = new MarvelService();
     try {
-      const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-      const { results } = await randomApi.getCharacter(id);
-      const { name, description, thumbnail, urls } = results[0];
-      console.log(results[0]);
+      const characterId = Math.floor(
+        Math.random() * (1011400 - 1011000) + 1011000
+      );
+      const { name, description, thumbnail, urls } = await api.getCharacter(
+        characterId
+      );
       setHeroData({
         name,
         description,
@@ -59,7 +62,7 @@ const Hero = () => {
       <ContainerStyled>
         <WrapperStyled>
           <HeroStyled>
-            <Loader loading={loading} />
+            {loading && <Loader />}
             <Error error={error} />
             {!loading && !error ? (
               <>

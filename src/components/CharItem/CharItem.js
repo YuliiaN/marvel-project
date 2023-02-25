@@ -4,11 +4,20 @@ import {
   CharItemTitleStyled,
 } from './CharItem.styled';
 
-const CharItem = () => {
+const CharItem = ({ id, name, thumbnail, handleClick }) => {
   return (
-    <CharItemStyled className="selected">
-      <CharItemImageStyled />
-      <CharItemTitleStyled>Abyss</CharItemTitleStyled>
+    <CharItemStyled
+      id={id}
+      className="char__item"
+      onClick={() => {
+        handleClick(id);
+      }}
+    >
+      <CharItemImageStyled
+        src={`${thumbnail.path}.${thumbnail.extension}`}
+        alt={name}
+      />
+      <CharItemTitleStyled>{name}</CharItemTitleStyled>
     </CharItemStyled>
   );
 };
