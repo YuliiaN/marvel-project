@@ -6,6 +6,8 @@ import {
   NavListItemStyled,
   SeparatorStyled,
 } from './Header.styled';
+import { routes } from 'routes';
+import { NavLink, Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -18,18 +20,18 @@ const Header = () => {
         }}
       >
         <LogoStyled>
-          <a href="/">
+          <Link to={routes.HOME}>
             <span style={{ color: '#9F0013' }}>Marvel</span> information portal
-          </a>
+          </Link>
         </LogoStyled>
         <NavStyled>
           <NavListStyled>
-            <NavListItemStyled style={{ color: '#9F0013' }}>
-              <a href="/">Characters </a>
+            <NavListItemStyled>
+              <NavLink to={routes.HOME}>Characters</NavLink>
             </NavListItemStyled>
             <SeparatorStyled>/</SeparatorStyled>
             <NavListItemStyled>
-              <a href="/">Comics</a>
+              <NavLink to={routes.COMICS}>Comics</NavLink>
             </NavListItemStyled>
           </NavListStyled>
         </NavStyled>

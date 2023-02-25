@@ -1,20 +1,18 @@
-// import { useState } from 'react';
-
-import Header from './Header.js/Header';
-import Hero from './Hero/Hero';
-import CharContent from './CharContent/CharContent';
-// import Loader from './Loader/Loader';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { routes } from 'routes';
+import { Layout } from 'layout/Layout/Layout';
+import Home from 'views/Home';
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <CharContent />
-        {/* <Loader loading={loading} /> */}
-      </main>
-    </>
+    <Routes>
+      <Route path={routes.HOME} element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
+      {/* <Route path={routes.CHARACTER_ID} />
+      <Route path={routes.COMICS} /> */}
+      {/* <Route path="*" element={<Navigate to={routes.HOME} />} /> */}
+    </Routes>
   );
 };
 
