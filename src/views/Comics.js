@@ -9,6 +9,7 @@ import { routes } from 'routes';
 import { useState, useEffect } from 'react';
 import { api } from 'components/Hero/Hero';
 import { nanoid } from 'nanoid';
+import { useSearchParams } from 'react-router-dom';
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
@@ -26,7 +27,6 @@ const Comics = () => {
     try {
       const res = await api.getAllComics(offset);
       setComics(prevData => (prevData.length ? [...comics, ...res] : [...res]));
-      console.log(res);
     } catch (error) {
       console.log(error.message);
     }
@@ -52,7 +52,7 @@ const Comics = () => {
             <ul className={css.list}>
               {comics.map(({ id, title, thumbnail, prices }) => (
                 <li key={nanoid()} className={css.item}>
-                  <Link to={routes.COMICS_ID}>
+                  <Link to={`/${routes.COMICS}/${id}`}>
                     <img
                       className={css.img}
                       src={`${thumbnail.path}.${thumbnail.extension}`}

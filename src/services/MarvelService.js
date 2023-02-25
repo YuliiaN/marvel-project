@@ -49,6 +49,14 @@ class MarvelService {
     }));
     return comics;
   };
+
+  getComicsById = async id => {
+    const res = await this.getResource(`comics/${id}?`);
+    const { results } = res;
+    const { title, description, pageCount, textObjects, prices, thumbnail } =
+      results[0];
+    return { title, description, pageCount, textObjects, prices, thumbnail };
+  };
 }
 
 export default MarvelService;
