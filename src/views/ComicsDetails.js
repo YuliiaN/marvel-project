@@ -5,10 +5,14 @@ import ContainerStyled from 'components/Container/Container.styled';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { api } from 'components/Hero/Hero';
+import { useLocation } from 'react-router-dom';
+import { routes } from 'routes';
 
 const ComicsDetails = () => {
   const { comicsId } = useParams();
   const [info, setInfo] = useState(null);
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
     if (!comicsId) {
@@ -25,10 +29,13 @@ const ComicsDetails = () => {
 
   const { title, description, pageCount, textObjects, prices, thumbnail } =
     info;
-  const desc = description
-    ? description
-    : `Unfortunately, there is no description about this comics`;
+  const desc = description ? description : `No description about the comics`;
   const lang = !!textObjects.length && textObjects.language;
+  const backPath = location.state?.from ?? routes.HOME;
+  const pages = pageCount
+    ? pageCount
+    : 'No information about the number of pages';
+  const price = prices[0].price ? `${prices[0].price}$` : 'not available';
 
   return (
     <ContainerStyled>
@@ -43,11 +50,11 @@ const ComicsDetails = () => {
             <div className={css.content}>
               <h2 className={css.title}>{title}</h2>
               <p className={css.desc}>{desc}</p>
-              <p className={css.pages}>{pageCount} pages</p>
+              <p className={css.pages}>{pages}</p>
               {lang && <p className={css.lang}>Language: {lang}</p>}
-              <p className={css.price}>{prices[0].price}$</p>
+              <p className={css.price}>{price}</p>
             </div>
-            <Link to="" className={css.button}>
+            <Link className={css.button} to={backPath}>
               Back to all
             </Link>
           </>

@@ -38,7 +38,7 @@ class MarvelService {
 
   getAllComics = async offset => {
     const res = await this.getResource(
-      `comics?orderBy=title&limit=12&offset=${offset}&`
+      `comics?orderBy=focDate&limit=12&offset=${offset}&`
     );
     const { results } = res;
     const comics = results.map(({ id, title, thumbnail, prices }) => ({

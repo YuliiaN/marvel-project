@@ -2,18 +2,18 @@ import css from './Comics.module.css';
 import ContainerStyled from 'components/Container/Container.styled';
 import avengers from '../img/Avengers.png';
 import logo from '../img/Avengers_logo.png';
-import comics from '../img/UW.png';
 import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
 import { Link } from 'react-router-dom';
 import { routes } from 'routes';
 import { useState, useEffect } from 'react';
 import { api } from 'components/Hero/Hero';
 import { nanoid } from 'nanoid';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
   const [offset, setOffset] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     fetchAllComics(offset);
@@ -52,7 +52,10 @@ const Comics = () => {
             <ul className={css.list}>
               {comics.map(({ id, title, thumbnail, prices }) => (
                 <li key={nanoid()} className={css.item}>
-                  <Link to={`/${routes.COMICS}/${id}`}>
+                  <Link
+                    to={`/${routes.COMICS}/${id}`}
+                    state={{ from: location }}
+                  >
                     <img
                       className={css.img}
                       src={`${thumbnail.path}.${thumbnail.extension}`}
