@@ -10,7 +10,9 @@ class MarvelService {
   };
 
   getAllCharacters = async offset => {
-    const res = await this.getResource(`characters?limit=9&offset=${offset}&`);
+    const res = await this.getResource(
+      `characters?orderBy=name&limit=9&offset=${offset}&`
+    );
     const { results } = res;
     const characters = results.map(({ id, name, thumbnail }) => ({
       id,
@@ -20,7 +22,7 @@ class MarvelService {
     return characters;
   };
 
-  getCharacter = async id => {
+  getCharacterById = async id => {
     const res = await this.getResource(`characters/${id}?`);
     const { results } = res;
     const { name, description, thumbnail, urls } = results[0];

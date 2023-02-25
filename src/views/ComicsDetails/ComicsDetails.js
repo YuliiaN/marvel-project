@@ -1,18 +1,14 @@
-import poster from '../img/x-men.png';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { routes } from 'routes';
+import { api } from 'components/Hero/Hero';
 import css from './ComicsDetails.module.css';
 import ContainerStyled from 'components/Container/Container.styled';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { api } from 'components/Hero/Hero';
-import { useLocation } from 'react-router-dom';
-import { routes } from 'routes';
 
 const ComicsDetails = () => {
   const { comicsId } = useParams();
   const [info, setInfo] = useState(null);
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     if (!comicsId) {

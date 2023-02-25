@@ -24,20 +24,21 @@ const Hero = () => {
     thumbnail: '',
     homepage: '',
     wiki: '',
-    loading: true,
+    loading: false,
     error: false,
   });
 
   useEffect(() => {
-    // fetchRandomHero();
+    fetchRandomHero();
   }, []);
 
   async function fetchRandomHero() {
     try {
+      setHeroData({ loading: true });
       const characterId = Math.floor(
         Math.random() * (1011400 - 1011000) + 1011000
       );
-      const { name, description, thumbnail, urls } = await api.getCharacter(
+      const { name, description, thumbnail, urls } = await api.getCharacterById(
         characterId
       );
       setHeroData({
@@ -64,7 +65,7 @@ const Hero = () => {
           <HeroStyled>
             {loading && <Loader />}
             <Error error={error} />
-            {!loading && !error ? (
+            {!loading && !error && (
               <>
                 <img src={thumbnail} alt={`${name}`} width="180" height="180" />
                 <HeroWrapperStyled>
@@ -85,7 +86,7 @@ const Hero = () => {
                   </div>
                 </HeroWrapperStyled>
               </>
-            ) : null}
+            )}
           </HeroStyled>
           <RandomStyled>
             <RandomText style={{ marginBottom: '41px' }}>
