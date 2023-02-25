@@ -62,7 +62,11 @@ const Comics = () => {
                       alt={title}
                     />
                     <h2 className={css.subtitle}>{title}</h2>
-                    <p className={css.price}>{prices[0].price}</p>
+                    <p className={css.price}>
+                      {prices[0].price
+                        ? `${prices[0].price}$`
+                        : 'not available'}
+                    </p>
                   </Link>
                 </li>
               ))}

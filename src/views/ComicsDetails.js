@@ -29,8 +29,8 @@ const ComicsDetails = () => {
 
   const { title, description, pageCount, textObjects, prices, thumbnail } =
     info;
-  const desc = description ? description : `No description about the comics`;
-  const lang = !!textObjects.length && textObjects.language;
+  const desc = description ? description : 'No description about the comics';
+  const lang = textObjects[0].language && textObjects[0].language;
   const backPath = location.state?.from ?? routes.HOME;
   const pages = pageCount
     ? pageCount
