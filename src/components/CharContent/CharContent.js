@@ -16,12 +16,12 @@ const CharContent = () => {
   return (
     <section>
       <ContainerStyled>
-        <CharContentStyled>
+        <div className="char-content grid gap-x-[1.563rem] items-start mt-[3.125rem]">
           <CharList onCharSelected={onCharSelected} />
-          <CharInfoStyled>
+          <div className="p-[1.563rem] shadow-2xl">
             {charId ? <CharInfo charId={charId} /> : <Skeleton />}
-          </CharInfoStyled>
-        </CharContentStyled>
+          </div>
+        </div>
       </ContainerStyled>
     </section>
   );

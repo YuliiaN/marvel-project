@@ -1,9 +1,8 @@
 import { nanoid } from 'nanoid';
 import { useState, useEffect } from 'react';
-import CharListStyled from './CharList.styled';
-import CharItem from 'components/CharItem/CharItem';
-import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
 import { api } from 'components/Hero/Hero';
+import CharItem from 'components/CharItem/CharItem';
+import { HeroBtn } from 'components/Hero/Hero.styled';
 import Loader from 'components/Loader/Loader';
 
 const CharList = ({ onCharSelected }) => {
@@ -39,27 +38,22 @@ const CharList = ({ onCharSelected }) => {
       {loading && <Loader />}
       {!!characters.length && (
         <div styles={{ height: '100%' }}>
-          <CharListStyled>
+          <ul className="char-list grid gap-x-[1.563rem] gap-y-[1.875rem]">
             {characters.map(({ id, name, thumbnail }) => (
               <CharItem
                 key={nanoid()}
                 id={id}
                 name={name}
                 thumbnail={thumbnail}
-                // getDetails={getCharacterDetails}
                 handleClick={onCharSelected}
               />
             ))}
-          </CharListStyled>
+          </ul>
           <HeroBtn
-            style={{
-              display: 'block',
-              width: '170px',
-              margin: '45px auto 0',
-            }}
+            className="btn long mx-auto mb-0 mt-[2.813rem]"
             onClick={handleClick}
           >
-            <BtnInner>Load more</BtnInner>
+            <div className="inner">Load more</div>
           </HeroBtn>
         </div>
       )}

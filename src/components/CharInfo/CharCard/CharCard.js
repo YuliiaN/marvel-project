@@ -1,40 +1,27 @@
-import {
-  HeroStyled,
-  HeroWrapperStyled,
-  HeroTitleStyled,
-  BtnInner,
-  HeroBtn,
-} from 'components/Hero/Hero.styled';
+import { HeroBtn } from 'components/Hero/Hero.styled';
 
 const CharCard = ({ char }) => {
   return (
-    <HeroStyled
-      style={{
-        width: '100%',
-        padding: '0',
-        alignItems: 'flex-start',
-        gap: '25px',
-      }}
-    >
+    <div className="bg-white flex items-center gap-[1.875rem]">
       <img
         alt={char.name}
         src={char.thumbnail}
-        style={{ width: '150px', height: '150px' }}
+        className="w-[9.375rem] h-[9.375rem]"
       />
-      <HeroWrapperStyled style={{ gap: '0' }}>
-        <HeroTitleStyled style={{ marginBottom: '35px' }}>
+      <div className="flex flex-col gap-[1.875rem]">
+        <h2 className="font-bold uppercase text-[1.375rem] leading-[1.625rem]">
           {char.name}
-        </HeroTitleStyled>
+        </h2>
         <div>
-          <HeroBtn href={char.homepage} style={{ marginBottom: '10px' }}>
-            <BtnInner>Homepage</BtnInner>
+          <HeroBtn href={char.homepage} className="btn mb-2.5">
+            <div className="inner">Homepage</div>
           </HeroBtn>
-          <HeroBtn href={char.wiki} className="secondary">
-            <BtnInner className="secondary">Wiki</BtnInner>
+          <HeroBtn href={char.wiki} className="btn secondary">
+            <div className="inner secondary">Wiki</div>
           </HeroBtn>
         </div>
-      </HeroWrapperStyled>
-    </HeroStyled>
+      </div>
+    </div>
   );
 };
 

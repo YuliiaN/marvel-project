@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import MarvelService from 'services/MarvelService';
 import ContainerStyled from 'components/Container/Container.styled';
-import { HeroBtn, BtnInner, RandomStyled } from './Hero.styled';
+import { HeroBtn, BtnInner } from './Hero.styled';
 import Loader from 'components/Loader/Loader';
 import Error from 'components/Error/Error';
-import mjolnir from '../../img/mjolnir.png';
 
 export const api = new MarvelService();
 
@@ -63,18 +62,13 @@ const Hero = () => {
                   <h2 className="font-bold uppercase text-[1.375rem] leading-[1.625rem]">
                     {name}
                   </h2>
-                  <p className="text-sm leading-4">{description}</p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '30px',
-                    }}
-                  >
-                    <HeroBtn href={homepage}>
-                      <BtnInner>Homepage</BtnInner>
+                  <p className="text-[0.875rem] leading-4">{description}</p>
+                  <div className="flex gap-[1.875rem]">
+                    <HeroBtn href={homepage} className="btn">
+                      <div className="inner">Homepage</div>
                     </HeroBtn>
-                    <HeroBtn href={wiki} className="secondary">
-                      <BtnInner className="secondary">Wiki</BtnInner>
+                    <HeroBtn href={wiki} className="btn secondary">
+                      <div className="inner secondary">Wiki</div>
                     </HeroBtn>
                   </div>
                 </div>
@@ -94,7 +88,7 @@ const Hero = () => {
             </p>
             <p className="mb-[17px]">Or choose another one</p>
             <HeroBtn onClick={fetchRandomHero} className="btn">
-              <BtnInner className="inner">Try it</BtnInner>
+              <div className="inner">Try it</div>
             </HeroBtn>
           </div>
         </div>

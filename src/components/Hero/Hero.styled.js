@@ -67,11 +67,11 @@ export const HeroBtn = styled.a`
     /* transform: translateY(-5px);
     color: #fff; */
   }
-
+  /* 
   &.secondary::before,
   &.secondary::after {
     background-color: #5c5c5c;
-  }
+  } */
 `;
 
 HeroBtn.defaultProps = {
@@ -113,15 +113,15 @@ export const BtnInner = styled.div`
   }
 
   &.secondary {
-    background-color: #5c5c5c;
-    &::before {
+    /* background-color: #5c5c5c; */
+    /* &::before {
       border-color: #5c5c5c transparent;
       transition: none;
     }
     &::after {
       border-color: #5c5c5c transparent;
       transition: none;
-    }
+    } */
   }
 `;
 
