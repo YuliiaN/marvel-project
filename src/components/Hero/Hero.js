@@ -1,19 +1,10 @@
 import { useState, useEffect } from 'react';
 import MarvelService from 'services/MarvelService';
 import ContainerStyled from 'components/Container/Container.styled';
-import {
-  WrapperStyled,
-  HeroStyled,
-  HeroWrapperStyled,
-  HeroTitleStyled,
-  HeroDescStyled,
-  HeroBtn,
-  BtnInner,
-  RandomStyled,
-  RandomText,
-} from './Hero.styled';
+import { HeroBtn, BtnInner, RandomStyled } from './Hero.styled';
 import Loader from 'components/Loader/Loader';
 import Error from 'components/Error/Error';
+import mjolnir from '../../img/mjolnir.png';
 
 export const api = new MarvelService();
 
@@ -61,16 +52,18 @@ const Hero = () => {
   return (
     <section>
       <ContainerStyled>
-        <WrapperStyled>
-          <HeroStyled>
+        <div className="flex justify-center h-[15.625rem] shadow-3xl">
+          <div className="w-2/4 bg-white flex items-center gap-[1.875rem] py-[2.188rem] px-10">
             {loading && <Loader />}
             <Error error={error} />
             {!loading && !error && (
               <>
                 <img src={thumbnail} alt={`${name}`} width="180" height="180" />
-                <HeroWrapperStyled>
-                  <HeroTitleStyled>{name}</HeroTitleStyled>
-                  <HeroDescStyled>{description}</HeroDescStyled>
+                <div className="flex flex-col gap-[0.813rem]">
+                  <h2 className="font-bold uppercase text-[1.375rem] leading-[1.625rem]">
+                    {name}
+                  </h2>
+                  <p className="text-sm leading-4">{description}</p>
                   <div
                     style={{
                       display: 'flex',
@@ -84,24 +77,27 @@ const Hero = () => {
                       <BtnInner className="secondary">Wiki</BtnInner>
                     </HeroBtn>
                   </div>
-                </HeroWrapperStyled>
+                </div>
               </>
             )}
-          </HeroStyled>
-          <RandomStyled>
-            <RandomText style={{ marginBottom: '41px' }}>
+          </div>
+          <div
+            className="w-2/4 py-[2.188rem] px-10 bg-black
+          font-bold text-2xl leading-7 text-[#fff]
+          bg-mjolnir bg-no-repeat bg-[length:202px]"
+            style={{ backgroundPosition: 'bottom 14px right -37px' }}
+          >
+            <p className="mb-[41px]">
               Random character for today!
               <br />
               Do you want to get to know him better?
-            </RandomText>
-            <RandomText style={{ marginBottom: '17px' }}>
-              Or choose another one
-            </RandomText>
-            <HeroBtn onClick={fetchRandomHero}>
-              <BtnInner>Try it</BtnInner>
+            </p>
+            <p className="mb-[17px]">Or choose another one</p>
+            <HeroBtn onClick={fetchRandomHero} className="btn">
+              <BtnInner className="inner">Try it</BtnInner>
             </HeroBtn>
-          </RandomStyled>
-        </WrapperStyled>
+          </div>
+        </div>
       </ContainerStyled>
     </section>
   );

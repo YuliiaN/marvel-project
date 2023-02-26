@@ -2,70 +2,70 @@ import styled from '@emotion/styled';
 import mjolnir from '../../img/mjolnir.png';
 
 export const WrapperStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
-  height: 250px;
+  /* display: flex;
+  justify-content: center; */
+  /* box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25); */
+  /* height: 250px; */
 `;
 
 export const HeroStyled = styled.div`
-  width: 50%;
-  padding: 35px 40px;
-  background-color: #fff;
+  /* width: 50%; */
+  /* padding: 35px 40px; */
+  /* background-color: #fff; */
 
-  display: flex;
-  align-items: center;
-  gap: 30px;
+  /* display: flex;
+  align-items: center; */
+  /* gap: 30px; */
 `;
 
 export const HeroWrapperStyled = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 13px; */
 `;
 
 export const HeroTitleStyled = styled.h2`
-  font-weight: 700;
+  /* font-weight: 700;
   font-size: 22px;
   line-height: 1.18;
-  text-transform: uppercase;
+  text-transform: uppercase; */
 `;
 
 export const HeroDescStyled = styled.p`
-  font-size: 14px;
-  line-height: 1.14;
+  /* font-size: 14px;
+  line-height: 1.14; */
 `;
 
 export const HeroBtn = styled.a`
-  width: 101px;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 14px;
-  transition: 0.3s transform;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+  /* width: 101px;
+  color: #fff; */
+  /* text-transform: uppercase; */
+  /* font-size: 14px; */
+  /* transition: 0.3s transform; */
+  /* border: none; */
+  /* background-color: transparent; */
+  /* cursor: pointer; */
 
   &::before {
-    content: '';
+    /* content: '';
     display: block;
     height: 10px;
     margin-left: 10px;
     transition: none;
-    background-color: #9f0013;
+    background-color: #9f0013; */
   }
   &::after {
-    content: '';
+    /* content: '';
     display: block;
     height: 10px;
     margin-right: 10px;
     transition: none;
-    background-color: #9f0013;
+    background-color: #9f0013; */
   }
 
   &:hover {
-    transform: translateY(-5px);
-    color: #fff;
+    /* transform: translateY(-5px);
+    color: #fff; */
   }
 
   &.secondary::before,
@@ -80,16 +80,16 @@ HeroBtn.defaultProps = {
 };
 
 export const BtnInner = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
 
   position: relative;
   background-color: #9f0013;
   line-height: 18px;
   padding: 0 18px;
-  transition: none;
+  transition: none; */
   &::before {
-    border-color: #9f0013 transparent;
+    /* border-color: #9f0013 transparent;
     border-style: solid;
     border-width: 0 0 10px 10px;
     content: '';
@@ -97,10 +97,10 @@ export const BtnInner = styled.div`
     position: absolute;
     left: 0;
     top: -10px;
-    transition: none;
+    transition: none; */
   }
   &::after {
-    border-color: #9f0013 transparent;
+    /* border-color: #9f0013 transparent;
     border-style: solid;
     border-width: 0 0 10px 10px;
     content: '';
@@ -109,7 +109,7 @@ export const BtnInner = styled.div`
     right: 0;
     bottom: -10px;
     transform: rotate(180deg);
-    transition: none;
+    transition: none; */
   }
 
   &.secondary {
@@ -126,19 +126,19 @@ export const BtnInner = styled.div`
 `;
 
 export const RandomStyled = styled.div`
-  width: 50%;
+  /* width: 50%;
   padding: 35px 40px;
-  background-color: #232222;
+  background-color: #232222; */
 
-  background-image: url(${mjolnir});
-  background-repeat: no-repeat;
-  background-position: bottom 14px right -37px;
-  background-size: 202px;
+  /* background-image: url(${mjolnir}); */
+  /* background-repeat: no-repeat; */
+  /* background-position: bottom 14px right -37px; */
+  /* background-size: 202px; */
 `;
 
 export const RandomText = styled.p`
-  font-weight: 700;
+  /* font-weight: 700;
   font-size: 24px;
   line-height: 1.16;
-  color: #fff;
+  color: #fff; */
 `;

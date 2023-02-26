@@ -1,40 +1,27 @@
-import ContainerStyled from 'components/Container/Container.styled';
-import {
-  LogoStyled,
-  NavStyled,
-  NavListStyled,
-  NavListItemStyled,
-  SeparatorStyled,
-} from './Header.styled';
 import { routes } from 'routes';
 import { NavLink, Link } from 'react-router-dom';
+import ContainerStyled from 'components/Container/Container.styled';
 
 const Header = () => {
   return (
-    <header style={{ padding: '50px 0' }}>
-      <ContainerStyled
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <LogoStyled>
+    <header className="py-12">
+      <ContainerStyled className="flex justify-between items-center">
+        <h1 className="font-bold text-2.5xl leading-8">
           <Link to={routes.HOME}>
-            <span style={{ color: '#9F0013' }}>Marvel</span> information portal
+            <span className="text-maroon">Marvel</span> information portal
           </Link>
-        </LogoStyled>
-        <NavStyled>
-          <NavListStyled>
-            <NavListItemStyled>
+        </h1>
+        <nav>
+          <ul className="flex gap-2 items-center text-2xl font-bold leading-7">
+            <li>
               <NavLink to={routes.HOME}>Characters</NavLink>
-            </NavListItemStyled>
-            <SeparatorStyled>/</SeparatorStyled>
-            <NavListItemStyled>
+            </li>
+            <span>/</span>
+            <li>
               <NavLink to={routes.COMICS}>Comics</NavLink>
-            </NavListItemStyled>
-          </NavListStyled>
-        </NavStyled>
+            </li>
+          </ul>
+        </nav>
       </ContainerStyled>
     </header>
   );

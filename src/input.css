@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Roboto Condensed, sans-serif;
+  }
+}
+
+.active {
+  color: #9f0013;
+}
+
+.home-layout {
+  background-image: url('../img/vision.png');
+  background-repeat: no-repeat;
+  background-position: right 0 bottom 0;
+  background-size: 467px;
+}
+
+.btn {
+  width: 101px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: 0.3s transform;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn::before {
+  content: '';
+  display: block;
+  height: 10px;
+  margin-left: 10px;
+  transition: none;
+  background-color: #9f0013;
+}
+
+.btn::after {
+  content: '';
+  display: block;
+  height: 10px;
+  margin-right: 10px;
+  transition: none;
+  background-color: #9f0013;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  color: #fff;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+  background-color: #9f0013;
+  line-height: 18px;
+  padding: 0 18px;
+  transition: none;
+}
+
+.inner::before {
+  border-color: #9f0013 transparent;
+  border-style: solid;
+  border-width: 0 0 10px 10px;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  transition: none;
+}
+
+.inner::after {
+  border-color: #9f0013 transparent;
+  border-style: solid;
+  border-width: 0 0 10px 10px;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  transform: rotate(180deg);
+  transition: none;
+}
