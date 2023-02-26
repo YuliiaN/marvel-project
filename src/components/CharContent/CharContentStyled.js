@@ -5,7 +5,7 @@ const CharContentStyled = styled.div`
   display: grid;
   grid-template-columns: 650px 425px;
   column-gap: 25px;
-  align-items: start;
+  align-items: flex-start;
 `;
 
 export default CharContentStyled;

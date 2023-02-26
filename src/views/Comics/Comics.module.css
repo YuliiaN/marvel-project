@@ -33,7 +33,7 @@
   flex-wrap: wrap;
   column-gap: 67px;
   row-gap: 57px;
-  align-items: start;
+  align-items: flex-start;
   margin-bottom: 50px;
 }
 
