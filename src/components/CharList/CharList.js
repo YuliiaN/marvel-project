@@ -9,10 +9,10 @@ import Loader from 'components/Loader/Loader';
 const CharList = ({ onCharSelected }) => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [offset, setOffset] = useState(null);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    fetchAllCharacters(0);
+    fetchAllCharacters();
   }, []);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const CharList = ({ onCharSelected }) => {
   async function fetchAllCharacters(offset) {
     try {
       const res = await api.getAllCharacters(offset);
-      setCharacters([...characters, ...res]);
+      setCharacters(prevData => [...prevData, ...res]);
       setLoading(false);
     } catch (error) {
       console.log(error.message);

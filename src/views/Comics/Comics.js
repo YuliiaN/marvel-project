@@ -16,7 +16,7 @@ const Comics = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchAllComics(offset);
+    fetchAllComics();
   }, []);
 
   useEffect(() => {
@@ -26,7 +26,10 @@ const Comics = () => {
   async function fetchAllComics(offset) {
     try {
       const res = await api.getAllComics(offset);
-      setComics(prevData => (prevData.length ? [...comics, ...res] : [...res]));
+      // setComics(prevData => (prevData.length ? [...comics, ...res] : [...res]));
+      setComics(prevComics => {
+        return !offset ? res : [...prevComics, ...res];
+      });
       setLoading(false);
     } catch (error) {
       console.log(error.message);
