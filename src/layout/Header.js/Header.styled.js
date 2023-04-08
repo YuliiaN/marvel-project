@@ -7,8 +7,6 @@ export const LogoStyled = styled.h1`
   color: #232222;
 `;
 
-export const NavStyled = styled.nav``;
-
 export const NavListStyled = styled.ul`
   display: flex;
   gap: 8px;

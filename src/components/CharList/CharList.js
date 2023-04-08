@@ -1,9 +1,9 @@
-import { nanoid } from 'nanoid';
 import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
+import { api } from 'components/Hero/Hero';
 import CharListStyled from './CharList.styled';
 import CharItem from 'components/CharItem/CharItem';
 import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
-import { api } from 'components/Hero/Hero';
 import Loader from 'components/Loader/Loader';
 
 const CharList = ({ onCharSelected }) => {
@@ -42,7 +42,6 @@ const CharList = ({ onCharSelected }) => {
                 id={id}
                 name={name}
                 thumbnail={thumbnail}
-                // getDetails={getCharacterDetails}
                 handleClick={onCharSelected}
               />
             ))}

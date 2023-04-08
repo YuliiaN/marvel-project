@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { api } from 'components/Hero/Hero';
 import css from './Comics.module.css';
 import ContainerStyled from 'components/Container/Container.styled';
-import ComicsPage from './ComicsPage';
+import ComicsPage from './ComicsItem';
 import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
 import Loader from 'components/Loader/Loader';
 
@@ -62,7 +62,7 @@ const Comics = () => {
               onClick={handleClick}
             >
               <BtnInner>Load more</BtnInner>
-            </HeroBtn>{' '}
+            </HeroBtn>
           </>
         )}
       </ContainerStyled>
