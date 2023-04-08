@@ -12,16 +12,12 @@ const CharList = ({ onCharSelected }) => {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    fetchAllCharacters();
-  }, []);
-
-  useEffect(() => {
-    fetchAllCharacters(offset);
+    fetchAllCharacters(9, offset);
   }, [offset]);
 
-  async function fetchAllCharacters(offset) {
+  async function fetchAllCharacters(limit, offset) {
     try {
-      const res = await api.getAllCharacters(offset);
+      const res = await api.getAllCharacters(limit, offset);
       setCharacters(prevData => [...prevData, ...res]);
       setLoading(false);
     } catch (error) {
@@ -31,7 +27,7 @@ const CharList = ({ onCharSelected }) => {
   }
 
   const handleClick = () => {
-    setOffset(prevState => (prevState += 9));
+    setOffset(prevState => prevState + 9);
   };
 
   return (

@@ -1,12 +1,11 @@
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import { api } from 'components/Hero/Hero';
 import css from './Comics.module.css';
 import ContainerStyled from 'components/Container/Container.styled';
+import ComicsPage from './ComicsPage';
 import { HeroBtn, BtnInner } from 'components/Hero/Hero.styled';
-import { Link } from 'react-router-dom';
-import { routes } from 'routes';
-import { useState, useEffect } from 'react';
-import { api } from 'components/Hero/Hero';
-import { nanoid } from 'nanoid';
-import { useLocation } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 
 const Comics = () => {
@@ -16,17 +15,12 @@ const Comics = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchAllComics();
-  }, []);
-
-  useEffect(() => {
-    fetchAllComics(offset);
+    fetchAllComics(12, offset);
   }, [offset]);
 
-  async function fetchAllComics(offset) {
+  async function fetchAllComics(limit, offset) {
     try {
-      const res = await api.getAllComics(offset);
-      // setComics(prevData => (prevData.length ? [...comics, ...res] : [...res]));
+      const res = await api.getAllComics(limit, offset);
       setComics(prevComics => {
         return !offset ? res : [...prevComics, ...res];
       });
@@ -49,24 +43,14 @@ const Comics = () => {
           <>
             <ul className={css.list}>
               {comics.map(({ id, title, thumbnail, prices }) => (
-                <li key={nanoid()} className={css.item}>
-                  <Link
-                    to={`/${routes.COMICS}/${id}`}
-                    state={{ from: location }}
-                  >
-                    <img
-                      className={css.img}
-                      src={`${thumbnail.path}.${thumbnail.extension}`}
-                      alt={title}
-                    />
-                    <h2 className={css.subtitle}>{title}</h2>
-                    <p className={css.price}>
-                      {prices[0].price
-                        ? `${prices[0].price}$`
-                        : 'not available'}
-                    </p>
-                  </Link>
-                </li>
+                <ComicsPage
+                  key={nanoid()}
+                  id={id}
+                  title={title}
+                  thumbnail={thumbnail}
+                  prices={prices}
+                  location={location}
+                />
               ))}
             </ul>
             <HeroBtn
