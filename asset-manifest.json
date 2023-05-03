@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/marvel-project/static/css/main.9d0c9025.css",
-    "main.js": "/marvel-project/static/js/main.21ba1b5a.js",
-    "static/js/98.c7276d69.chunk.js": "/marvel-project/static/js/98.c7276d69.chunk.js",
+    "main.css": "/marvel-project/static/css/main.28c59f71.css",
+    "main.js": "/marvel-project/static/js/main.b634cc29.js",
+    "static/js/98.647d8cc3.chunk.js": "/marvel-project/static/js/98.647d8cc3.chunk.js",
     "static/css/867.aa75a3cb.chunk.css": "/marvel-project/static/css/867.aa75a3cb.chunk.css",
-    "static/js/867.20c249c3.chunk.js": "/marvel-project/static/js/867.20c249c3.chunk.js",
+    "static/js/867.e11bd6a4.chunk.js": "/marvel-project/static/js/867.e11bd6a4.chunk.js",
     "static/media/vision.png": "/marvel-project/static/media/vision.a6a5a9ca9a568871a720.png",
     "static/media/mjolnir.png": "/marvel-project/static/media/mjolnir.482186e7d244971ab810.png",
     "static/media/Avengers.png": "/marvel-project/static/media/Avengers.9feca051f512a27cbdcf.png",
     "static/media/Avengers_logo.png": "/marvel-project/static/media/Avengers_logo.432b698b0454b3a064a9.png",
     "index.html": "/marvel-project/index.html",
-    "main.9d0c9025.css.map": "/marvel-project/static/css/main.9d0c9025.css.map",
-    "main.21ba1b5a.js.map": "/marvel-project/static/js/main.21ba1b5a.js.map",
-    "98.c7276d69.chunk.js.map": "/marvel-project/static/js/98.c7276d69.chunk.js.map",
+    "main.28c59f71.css.map": "/marvel-project/static/css/main.28c59f71.css.map",
+    "main.b634cc29.js.map": "/marvel-project/static/js/main.b634cc29.js.map",
+    "98.647d8cc3.chunk.js.map": "/marvel-project/static/js/98.647d8cc3.chunk.js.map",
     "867.aa75a3cb.chunk.css.map": "/marvel-project/static/css/867.aa75a3cb.chunk.css.map",
-    "867.20c249c3.chunk.js.map": "/marvel-project/static/js/867.20c249c3.chunk.js.map"
+    "867.e11bd6a4.chunk.js.map": "/marvel-project/static/js/867.e11bd6a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d0c9025.css",
-    "static/js/main.21ba1b5a.js"
+    "static/css/main.28c59f71.css",
+    "static/js/main.b634cc29.js"
   ]
 }
