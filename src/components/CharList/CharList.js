@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import debounce from 'debounce';
 import { api } from 'components/Hero/Hero';
 import CharListStyled from './CharList.styled';
 import CharItem from 'components/CharItem/CharItem';
@@ -26,9 +27,9 @@ const CharList = ({ onCharSelected }) => {
     }
   }
 
-  const handleClick = () => {
+  const handleClick = debounce(() => {
     setOffset(prevState => prevState + 9);
-  };
+  }, 500);
 
   return (
     <>

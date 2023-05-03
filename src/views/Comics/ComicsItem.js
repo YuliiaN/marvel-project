@@ -3,7 +3,7 @@ import { routes } from 'routes';
 import css from './Comics.module.css';
 
 const ComicsPage = ({ id, title, thumbnail, prices, location }) => {
-  const route = `/${routes.COMICS}/${id}`;
+  const route = routes.COMICS_ID.replace(':comicsId', id);
   const imgPath = `${thumbnail.path}.${thumbnail.extension}`;
   const price = prices[0].price ? `${prices[0].price}$` : 'not available';
 

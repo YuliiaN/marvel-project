@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import debounce from 'debounce';
 import { api } from 'components/Hero/Hero';
 import css from './Comics.module.css';
 import ContainerStyled from 'components/Container/Container.styled';
@@ -31,9 +32,9 @@ const Comics = () => {
     }
   }
 
-  const handleClick = () => {
+  const handleClick = debounce(() => {
     setOffset(prevState => prevState + 12);
-  };
+  }, 500);
 
   return (
     <section style={{ padding: '45px 0 50px' }}>

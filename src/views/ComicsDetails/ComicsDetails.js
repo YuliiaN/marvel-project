@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { routes } from 'routes';
 import { api } from 'components/Hero/Hero';
 import css from './ComicsDetails.module.css';
+import Header from 'layout/Header.js/Header';
+import Banner from 'views/Comics/Banner';
 import ContainerStyled from 'components/Container/Container.styled';
 
 const ComicsDetails = () => {
@@ -34,29 +36,33 @@ const ComicsDetails = () => {
   const price = prices[0].price ? `${prices[0].price}$` : 'not available';
 
   return (
-    <ContainerStyled>
-      <div className={css.card}>
-        {info && (
-          <>
-            <img
-              className={css.img}
-              src={`${thumbnail.path}.${thumbnail.extension}`}
-              alt={title}
-            />
-            <div className={css.content}>
-              <h2 className={css.title}>{title}</h2>
-              <p className={css.desc}>{desc}</p>
-              <p className={css.pages}>{pages}</p>
-              {lang && <p className={css.lang}>Language: {lang}</p>}
-              <p className={css.price}>{price}</p>
-            </div>
-            <Link className={css.button} to={backPath}>
-              Back to all
-            </Link>
-          </>
-        )}
-      </div>
-    </ContainerStyled>
+    <>
+      <Header />
+      <Banner />
+      <ContainerStyled>
+        <div className={css.card}>
+          {info && (
+            <>
+              <img
+                className={css.img}
+                src={`${thumbnail.path}.${thumbnail.extension}`}
+                alt={title}
+              />
+              <div className={css.content}>
+                <h2 className={css.title}>{title}</h2>
+                <p className={css.desc}>{desc}</p>
+                <p className={css.pages}>{pages}</p>
+                {lang && <p className={css.lang}>Language: {lang}</p>}
+                <p className={css.price}>{price}</p>
+              </div>
+              <Link className={css.button} to={backPath}>
+                Back to all
+              </Link>
+            </>
+          )}
+        </div>
+      </ContainerStyled>
+    </>
   );
 };
 
