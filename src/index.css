@@ -56,13 +56,13 @@ button {
   padding: 0;
 }
 
-.active {
-  color: #9f0013;
-}
-
 .home-layout {
   background-image: url('./img/vision.png');
   background-repeat: no-repeat;
   background-position: right 0 bottom 0;
   background-size: 467px;
+}
+
+.active {
+  color: #9f0013;
 }

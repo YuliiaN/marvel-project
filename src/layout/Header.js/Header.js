@@ -26,11 +26,15 @@ const Header = () => {
         <nav>
           <NavListStyled>
             <NavListItemStyled>
-              <NavLink to={routes.HOME}>Characters</NavLink>
+              <NavLink to={routes.HOME} activeClassName="active">
+                Characters
+              </NavLink>
             </NavListItemStyled>
             <SeparatorStyled>/</SeparatorStyled>
             <NavListItemStyled>
-              <NavLink to={routes.COMICS}>Comics</NavLink>
+              <NavLink to={routes.COMICS} activeClassName="active">
+                Comics
+              </NavLink>
             </NavListItemStyled>
           </NavListStyled>
         </nav>
